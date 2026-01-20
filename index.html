@@ -260,18 +260,38 @@ nav a:hover{
 
 <script>
 const films = [
-  { title: "Minecraft Movie", date: "2025-01-01", poster: "https://picsum.photos/400/300?random=1", url: "https://uqload.bz/embed-4zvg3el1ohai.html" }
+  {
+    title: "Minecraft Movie",
+    date: "2025-01-01",
+    poster: "https://fr.web.img5.acsta.net/c_300_300/img/3e/61/3e619c6423fd2c82be9ec8b727aa217b.jpg",
+    url: "https://uqload.bz/embed-4zvg3el1ohai.html"
+  }
 ];
 
 const series = {
   "Série Minecraft": [
-    { title: "Episode 1", date: "2025-01-02", poster: "https://picsum.photos/400/300?random=2", url: "https://uqload.bz/embed-4zvg3el1ohai.html" },
-    { title: "Episode 2", date: "2025-01-03", poster: "https://picsum.photos/400/300?random=3", url: "https://uqload.bz/embed-4zvg3el1ohai.html" }
+    {
+      title: "Episode 1",
+      date: "2025-01-02",
+      poster: "https://fr.web.img5.acsta.net/c_300_300/img/3e/61/3e619c6423fd2c82be9ec8b727aa217b.jpg",
+      url: "https://uqload.bz/embed-4zvg3el1ohai.html"
+    },
+    {
+      title: "Episode 2",
+      date: "2025-01-03",
+      poster: "https://fr.web.img5.acsta.net/c_300_300/img/3e/61/3e619c6423fd2c82be9ec8b727aa217b.jpg",
+      url: "https://uqload.bz/embed-4zvg3el1ohai.html"
+    }
   ]
 };
 
 const news = [
-  { title: "News Minecraft", date: "2025-05-01", poster: "https://picsum.photos/400/300?random=4", url: "https://uqload.bz/embed-4zvg3el1ohai.html" }
+  {
+    title: "News Minecraft",
+    date: "2025-05-01",
+    poster: "https://fr.web.img5.acsta.net/c_300_300/img/3e/61/3e619c6423fd2c82be9ec8b727aa217b.jpg",
+    url: "https://uqload.bz/embed-4zvg3el1ohai.html"
+  }
 ];
 
 function showSection(section){
@@ -372,27 +392,8 @@ function closePlayer(){
 
 function goFullscreen(){
   const player = document.getElementById("player");
-  if (player.requestFullscreen) {
-    player.requestFullscreen();
-  } else if (player.webkitRequestFullscreen) {
-    player.webkitRequestFullscreen();
-  } else if (player.msRequestFullscreen) {
-    player.msRequestFullscreen();
-  }
+  if (player.requestFullscreen) {player.requestFullscreen();}
 }
-
-// Dark Mode
-const themeBtn = document.getElementById("themeBtn");
-themeBtn.addEventListener("click", () => {
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  if(currentTheme === "light"){
-    document.documentElement.setAttribute("data-theme", "dark");
-    themeBtn.innerText = "Light Mode";
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    themeBtn.innerText = "Dark Mode";
-  }
-});
 
 document.documentElement.setAttribute("data-theme", "dark");
 loadContent();

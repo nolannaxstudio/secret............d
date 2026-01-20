@@ -3,320 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StreamSite</title>
+<title>StreamGalaxy</title>
 <style>
 :root{
-    --bg:#070A12;
-    --card:#0F1524;
-    --card2:#0B1020;
-    --text:#F4F6FF;
-    --sub:#A6B0C3;
-    --primary:#7C3AED;
-    --accent:#22C55E;
-    --shadow: rgba(0,0,0,0.6);
+  --bg:#060911;
+  --bg2:#0A1020;
+  --card:#0F1730;
+  --card2:#0B1226;
+  --text:#F4F6FF;
+  --sub:#A6B0C3;
+  --primary:#7C3AED;
+  --accent:#22C55E;
+  --shadow: rgba(0,0,0,0.6);
 }
+
 [data-theme="light"]{
-    --bg:#F4F5F7;
-    --card:#FFFFFF;
-    --card2:#F1F3F8;
-    --text:#0B1220;
-    --sub:#5C6B82;
-    --primary:#7C3AED;
-    --accent:#22C197;
-    --shadow: rgba(0,0,0,0.15);
+  --bg:#F4F5F7;
+  --bg2:#FFFFFF;
+  --card:#FFFFFF;
+  --card2:#F1F3F8;
+  --text:#0B1220;
+  --sub:#5C6B82;
+  --primary:#7C3AED;
+  --accent:#22C197;
+  --shadow: rgba(0,0,0,0.15);
 }
 
 *{box-sizing:border-box;}
 body{
-    margin:0;
-    font-family: 'Arial', sans-serif;
-    background:var(--bg);
-    color:var(--text);
+  margin:0;
+  font-family: 'Arial', sans-serif;
+  background:linear-gradient(180deg, var(--bg), var(--bg2));
+  color:var(--text);
 }
 
+/* ====== MENU ====== */
 header{
-    position:sticky;
-    top:0;
-    z-index:999;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 24px;
-    background:rgba(10, 14, 25, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom:1px solid rgba(255,255,255,0.06);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:999;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 24px;
+  background:rgba(8, 12, 22, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
-    font-size:22px;
-    font-weight:800;
-    color:var(--primary);
-    letter-spacing:1px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+.logo .dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+}
+.logo span{
+  font-size:20px;
+  color:var(--primary);
 }
 
 nav{
-    display:flex;
-    gap:18px;
-    align-items:center;
+  display:flex;
+  gap:16px;
+  align-items:center;
 }
-
 nav a{
-    color:var(--text);
-    text-decoration:none;
-    font-weight:600;
-    opacity:0.9;
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:12px;
+  transition:0.2s;
 }
-
 nav a:hover{
-    color:var(--accent);
+  background:rgba(255,255,255,0.06);
+  color:var(--accent);
 }
 
 .btn{
-    padding:10px 14px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
-    background:var(--primary);
-    color:#fff;
-    transition:0.2s;
+  padding:10px 14px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:800;
+  background:var(--primary);
+  color:#fff;
+  transition:0.2s;
 }
-
 .btn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px var(--shadow);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px var(--shadow);
 }
 
+/* ====== CONTENT ====== */
 .container{
-    padding:22px;
+  padding:110px 24px 40px;
 }
 
 .hero{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    padding:24px;
-    border-radius:22px;
-    background: linear-gradient(135deg, rgba(124,58,237,0.85), rgba(34,197,94,0.85));
-    margin-bottom:20px;
+  padding:26px;
+  border-radius:22px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.85), rgba(34,197,94,0.85));
+  margin-bottom:22px;
 }
-
 .hero h1{
-    margin:0;
-    font-size:34px;
-    letter-spacing:1px;
+  margin:0;
+  font-size:38px;
+  letter-spacing:1px;
 }
 .hero p{
-    margin:0;
-    color:rgba(255,255,255,0.9);
-    font-size:16px;
+  margin:10px 0 0 0;
+  font-size:16px;
+  color:rgba(255,255,255,0.92);
 }
 
-/* Carrousel */
+/* ====== CAROUSEL ====== */
 .sectionTitle{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin:18px 0 12px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:18px 0 12px 0;
 }
 .sectionTitle h2{
-    margin:0;
-    font-size:20px;
-    letter-spacing:0.5px;
+  margin:0;
+  font-size:20px;
 }
 .sectionTitle span{
-    color:var(--sub);
-    font-size:14px;
+  color:var(--sub);
+  font-size:14px;
 }
 
 .carousel{
-    display:flex;
-    gap:16px;
-    overflow-x:auto;
-    padding-bottom:10px;
-    scrollbar-width:none;
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding-bottom:10px;
+  scrollbar-width:none;
 }
 .carousel::-webkit-scrollbar{display:none;}
 
 .card{
-    min-width:220px;
-    width:220px;
-    border-radius:18px;
-    overflow:hidden;
-    background:var(--card);
-    box-shadow: 0 14px 30px var(--shadow);
-    transition:0.2s;
-    position:relative;
+  min-width:240px;
+  width:240px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--card);
+  box-shadow: 0 14px 30px var(--shadow);
+  transition:0.2s;
+  position:relative;
 }
-
 .card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px var(--shadow);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px var(--shadow);
 }
-
 .card img{
-    width:100%;
-    height:320px;
-    object-fit:cover;
-    display:block;
+  width:100%;
+  height:340px;
+  object-fit:cover;
 }
-
 .card .info{
-    padding:14px;
+  padding:14px;
 }
 .card .info h3{
-    margin:0;
-    font-size:16px;
+  margin:0;
+  font-size:16px;
 }
 .card .info p{
-    margin:8px 0 0 0;
-    color:var(--sub);
-    font-size:13px;
+  margin:8px 0 0 0;
+  color:var(--sub);
+  font-size:13px;
 }
 .card .info button{
-    margin-top:12px;
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:800;
-    background:var(--accent);
-    color:#fff;
+  margin-top:12px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:800;
+  background:var(--accent);
+  color:#fff;
 }
 
-/* Tag News */
+/* ====== TAG NEWS ====== */
 .tag{
-    position:absolute;
-    top:12px;
-    left:12px;
-    padding:6px 10px;
-    border-radius:12px;
-    background:var(--accent);
-    color:#fff;
-    font-weight:800;
-    font-size:12px;
+  position:absolute;
+  top:12px;
+  left:12px;
+  padding:6px 10px;
+  border-radius:12px;
+  background:var(--accent);
+  color:#fff;
+  font-weight:800;
+  font-size:12px;
 }
 
-/* Player */
+/* ====== PLAYER ====== */
 .player{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    display:none;
-    z-index:1000;
-    background:rgba(0,0,0,0.85);
-    justify-content:center;
-    align-items:center;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:none;
+  z-index:1000;
+  background:rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
 }
-
 .playerContent{
-    width:95%;
-    max-width:1100px;
-    background:var(--card2);
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow: 0 20px 60px var(--shadow);
+  width:95%;
+  max-width:1100px;
+  background:var(--card2);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow: 0 20px 60px var(--shadow);
 }
-
 .playerHeader{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:14px 16px;
-    border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 .playerHeader h2{
-    margin:0;
-    font-size:18px;
+  margin:0;
+  font-size:18px;
 }
 .playerHeader button{
-    padding:10px 12px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    background:var(--primary);
-    color:#fff;
-    font-weight:800;
+  padding:10px 12px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  background:var(--primary);
+  color:#fff;
+  font-weight:800;
 }
-
 .player iframe{
-    width:100%;
-    height:600px;
-    border:0;
+  width:100%;
+  height:600px;
+  border:0;
 }
 
 @media (max-width: 768px){
-    .hero h1{font-size:28px;}
-    .card{min-width:180px; width:180px;}
-    .card img{height:260px;}
-    .player iframe{height:420px;}
+  .hero h1{font-size:30px;}
+  .card{min-width:200px; width:200px;}
+  .card img{height:300px;}
+  .player iframe{height:420px;}
 }
 </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">StreamSite</div>
-    <nav>
-        <a href="#" onclick="scrollToSection('home')">Accueil</a>
-        <a href="#" onclick="scrollToSection('films')">Films</a>
-        <a href="#" onclick="scrollToSection('series')">Séries</a>
-        <a href="#" onclick="scrollToSection('news')">News</a>
-    </nav>
-    <button class="btn" id="themeBtn">Dark Mode</button>
+  <div class="logo">
+    <div class="dot"></div>
+    <span>StreamGalaxy</span>
+  </div>
+
+  <nav>
+    <a href="#" onclick="scrollToSection('home')">Accueil</a>
+    <a href="#" onclick="scrollToSection('films')">Films</a>
+    <a href="#" onclick="scrollToSection('series')">Séries</a>
+    <a href="#" onclick="scrollToSection('news')">News</a>
+  </nav>
+
+  <button class="btn" id="themeBtn">Dark Mode</button>
 </header>
 
 <div class="container">
+  <div class="hero" id="home">
+    <h1>Bienvenue sur StreamGalaxy</h1>
+    <p>Films & Séries + Uqload embed + mode sombre + plein écran + interface pro.</p>
+  </div>
 
-    <div class="hero" id="home">
-        <h1>Bienvenue sur StreamSite</h1>
-        <p>Films & Séries + lecture Uqload embed + dark mode + plein écran.</p>
+  <!-- FILMS -->
+  <div id="films">
+    <div class="sectionTitle">
+      <h2>Films</h2>
+      <span>Les plus récents</span>
     </div>
+    <div class="carousel" id="filmsCarousel"></div>
+  </div>
 
-    <!-- FILMS -->
-    <div id="films">
-        <div class="sectionTitle">
-            <h2>Films</h2>
-            <span>Les nouveautés</span>
-        </div>
-        <div class="carousel" id="filmsCarousel"></div>
+  <!-- SERIES -->
+  <div id="series">
+    <div class="sectionTitle">
+      <h2>Séries</h2>
+      <span>Tout est regroupé ici</span>
     </div>
+    <div class="carousel" id="seriesCarousel"></div>
+  </div>
 
-    <!-- SERIES -->
-    <div id="series">
-        <div class="sectionTitle">
-            <h2>Séries</h2>
-            <span>Tout est regroupé ici</span>
-        </div>
-        <div class="carousel" id="seriesCarousel"></div>
+  <!-- NEWS -->
+  <div id="news">
+    <div class="sectionTitle">
+      <h2>News</h2>
+      <span>Dernières mises à jour</span>
     </div>
-
-    <!-- NEWS -->
-    <div id="news">
-        <div class="sectionTitle">
-            <h2>News</h2>
-            <span>Dernières mises à jour</span>
-        </div>
-        <div class="carousel" id="newsCarousel"></div>
-    </div>
-
+    <div class="carousel" id="newsCarousel"></div>
+  </div>
 </div>
 
 <!-- PLAYER -->
 <div class="player" id="player">
-    <div class="playerContent">
-        <div class="playerHeader">
-            <h2 id="playerTitle"></h2>
-            <div>
-                <button onclick="toggleFullScreen()">Plein écran</button>
-                <button onclick="closePlayer()">Fermer</button>
-            </div>
-        </div>
-        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+  <div class="playerContent">
+    <div class="playerHeader">
+      <h2 id="playerTitle"></h2>
+      <div>
+        <button onclick="toggleFullScreen()">Plein écran</button>
+        <button onclick="closePlayer()">Fermer</button>
+      </div>
     </div>
+    <iframe id="videoFrame" src="" allowfullscreen></iframe>
+  </div>
 </div>
 
 <script>
@@ -357,116 +367,110 @@ const news = [
 ];
 
 function scrollToSection(id){
-    document.getElementById(id).scrollIntoView({behavior:"smooth"});
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
 function createCard(item, type){
-    const card = document.createElement("div");
-    card.className = "card";
+  const card = document.createElement("div");
+  card.className = "card";
 
-    if(type === "news"){
-        card.innerHTML = `
-            <span class="tag">NEWS</span>
-            <img src="${item.poster}">
-            <div class="info">
-                <h3>${item.title}</h3>
-                <p>Date d'ajout : ${item.date}</p>
-                <button onclick="play('${item.url}', '${item.title}')">Lire</button>
-            </div>
-        `;
-    } else if(type === "series"){
-        card.innerHTML = `
-            <img src="${item.poster}">
-            <div class="info">
-                <h3>${item.serie}</h3>
-                <p>Episodes : ${item.episodes.length}</p>
-                <button onclick="showEpisodes(${JSON.stringify(item.episodes)}, '${item.serie}')">Voir épisodes</button>
-            </div>
-        `;
-    } else {
-        card.innerHTML = `
-            <img src="${item.poster}">
-            <div class="info">
-                <h3>${item.title}</h3>
-                <p>Date d'ajout : ${item.date}</p>
-                <button onclick="play('${item.url}', '${item.title}')">Lire</button>
-            </div>
-        `;
-    }
-
-    return card;
+  if(type === "news"){
+    card.innerHTML = `
+      <span class="tag">NEWS</span>
+      <img src="${item.poster}">
+      <div class="info">
+        <h3>${item.title}</h3>
+        <p>Date d'ajout : ${item.date}</p>
+        <button onclick="play('${item.url}', '${item.title}')">Lire</button>
+      </div>
+    `;
+  } else if(type === "series"){
+    card.innerHTML = `
+      <img src="${item.poster}">
+      <div class="info">
+        <h3>${item.serie}</h3>
+        <p>Episodes : ${item.episodes.length}</p>
+        <button onclick="showEpisodes(${JSON.stringify(item.episodes)}, '${item.serie}')">Voir épisodes</button>
+      </div>
+    `;
+  } else {
+    card.innerHTML = `
+      <img src="${item.poster}">
+      <div class="info">
+        <h3>${item.title}</h3>
+        <p>Date d'ajout : ${item.date}</p>
+        <button onclick="play('${item.url}', '${item.title}')">Lire</button>
+      </div>
+    `;
+  }
+  return card;
 }
 
 function loadContent(){
-    const filmsCarousel = document.getElementById("filmsCarousel");
-    const seriesCarousel = document.getElementById("seriesCarousel");
-    const newsCarousel = document.getElementById("newsCarousel");
+  document.getElementById("filmsCarousel").innerHTML = "";
+  document.getElementById("seriesCarousel").innerHTML = "";
+  document.getElementById("newsCarousel").innerHTML = "";
 
-    filmsCarousel.innerHTML = "";
-    seriesCarousel.innerHTML = "";
-    newsCarousel.innerHTML = "";
-
-    films.forEach(f => filmsCarousel.appendChild(createCard(f, "film")));
-    series.forEach(s => seriesCarousel.appendChild(createCard(s, "series")));
-    news.forEach(n => newsCarousel.appendChild(createCard(n, "news")));
+  films.forEach(f => document.getElementById("filmsCarousel").appendChild(createCard(f, "film")));
+  series.forEach(s => document.getElementById("seriesCarousel").appendChild(createCard(s, "series")));
+  news.forEach(n => document.getElementById("newsCarousel").appendChild(createCard(n, "news")));
 }
 
 function showEpisodes(episodes, serieName){
-    const seriesCarousel = document.getElementById("seriesCarousel");
-    seriesCarousel.innerHTML = `
-        <div class="card" style="min-width:100%; width:100%; background:var(--card2);">
-            <div class="info">
-                <h3 style="font-size:20px;">${serieName}</h3>
-                <p style="color:var(--sub);">Episodes disponibles :</p>
-                <button class="btn" onclick="loadContent()">Retour</button>
-            </div>
-        </div>
+  const seriesCarousel = document.getElementById("seriesCarousel");
+  seriesCarousel.innerHTML = `
+    <div class="card" style="min-width:100%; width:100%; background:var(--card2);">
+      <div class="info">
+        <h3 style="font-size:20px;">${serieName}</h3>
+        <p style="color:var(--sub);">Episodes disponibles :</p>
+        <button class="btn" onclick="loadContent()">Retour</button>
+      </div>
+    </div>
+  `;
+
+  episodes.forEach(ep => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${series[0].poster}">
+      <div class="info">
+        <h3>${ep.title}</h3>
+        <p>Date d'ajout : ${ep.date}</p>
+        <button onclick="play('${ep.url}', '${serieName} - ${ep.title}')">Lire</button>
+      </div>
     `;
+    seriesCarousel.appendChild(card);
+  });
 
-    episodes.forEach(ep => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-            <img src="${series[0].poster}">
-            <div class="info">
-                <h3>${ep.title}</h3>
-                <p>Date d'ajout : ${ep.date}</p>
-                <button onclick="play('${ep.url}', '${serieName} - ${ep.title}')">Lire</button>
-            </div>
-        `;
-        seriesCarousel.appendChild(card);
-    });
-
-    scrollToSection("series");
+  scrollToSection("series");
 }
 
 function play(url, title){
-    document.getElementById("playerTitle").innerText = title;
-    document.getElementById("videoFrame").src = url + "?autoplay=1";
-    document.getElementById("player").style.display = "flex";
+  document.getElementById("playerTitle").innerText = title;
+  document.getElementById("videoFrame").src = url + "?autoplay=1";
+  document.getElementById("player").style.display = "flex";
 }
 
 function closePlayer(){
-    document.getElementById("player").style.display = "none";
-    document.getElementById("videoFrame").src = "";
+  document.getElementById("player").style.display = "none";
+  document.getElementById("videoFrame").src = "";
 }
 
 function toggleFullScreen(){
-    const elem = document.getElementById("playerContent");
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    } else {
-        document.exitFullscreen();
-    }
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
 }
 
 // Dark Mode
 const themeBtn = document.getElementById("themeBtn");
 themeBtn.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    themeBtn.innerText = next === "dark" ? "Dark Mode" : "Light Mode";
+  const current = document.documentElement.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  themeBtn.innerText = next === "dark" ? "Dark Mode" : "Light Mode";
 });
 
 document.documentElement.setAttribute("data-theme", "dark");

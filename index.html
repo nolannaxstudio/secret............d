@@ -6,23 +6,26 @@
 <title>StreamSite</title>
 <style>
 :root{
-    --bg:#0b0f18;
-    --card:#121827;
-    --text:#f4f4f8;
-    --sub:#a0a6b2;
-    --primary:#7c3aed;
-    --primary2:#22c55e;
+    --bg:#070A12;
+    --card:#0F1524;
+    --card2:#0B1020;
+    --text:#F4F6FF;
+    --sub:#A6B0C3;
+    --primary:#7C3AED;
+    --accent:#22C55E;
     --shadow: rgba(0,0,0,0.6);
 }
 [data-theme="light"]{
-    --bg:#f3f4f6;
-    --card:#ffffff;
-    --text:#0f172a;
-    --sub:#6b7280;
-    --primary:#7c3aed;
-    --primary2:#22c197;
-    --shadow: rgba(0,0,0,0.12);
+    --bg:#F4F5F7;
+    --card:#FFFFFF;
+    --card2:#F1F3F8;
+    --text:#0B1220;
+    --sub:#5C6B82;
+    --primary:#7C3AED;
+    --accent:#22C197;
+    --shadow: rgba(0,0,0,0.15);
 }
+
 *{box-sizing:border-box;}
 body{
     margin:0;
@@ -30,177 +33,226 @@ body{
     background:var(--bg);
     color:var(--text);
 }
+
 header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px;
     position:sticky;
     top:0;
     z-index:999;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 24px;
     background:rgba(10, 14, 25, 0.8);
     backdrop-filter: blur(10px);
     border-bottom:1px solid rgba(255,255,255,0.06);
 }
+
 .logo{
     font-size:22px;
-    font-weight:700;
+    font-weight:800;
     color:var(--primary);
+    letter-spacing:1px;
 }
+
 nav{
     display:flex;
-    gap:15px;
+    gap:18px;
     align-items:center;
 }
+
 nav a{
     color:var(--text);
     text-decoration:none;
-    font-weight:500;
+    font-weight:600;
+    opacity:0.9;
 }
+
 nav a:hover{
-    color:var(--primary2);
+    color:var(--accent);
 }
+
 .btn{
     padding:10px 14px;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
     cursor:pointer;
-    font-weight:600;
+    font-weight:700;
     background:var(--primary);
     color:#fff;
     transition:0.2s;
 }
+
 .btn:hover{
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px var(--shadow);
+    box-shadow: 0 10px 20px var(--shadow);
 }
+
 .container{
-    padding:20px;
+    padding:22px;
 }
+
 .hero{
     display:flex;
     flex-direction:column;
-    gap:15px;
-    padding:20px;
-    border-radius:20px;
-    background:linear-gradient(135deg, rgba(124,58,237,0.9), rgba(34,197,94,0.9));
-    color:#fff;
+    gap:10px;
+    padding:24px;
+    border-radius:22px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.85), rgba(34,197,94,0.85));
     margin-bottom:20px;
 }
-.hero h1{margin:0; font-size:36px;}
-.hero p{margin:0; color:rgba(255,255,255,0.9); font-size:16px;}
-.grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap:20px;
-}
-.card{
-    background:var(--card);
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow: 0 10px 20px var(--shadow);
-    transition:0.2s;
-}
-.card:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 18px 30px var(--shadow);
-}
-.card img{
-    width:100%;
-    height:140px;
-    object-fit:cover;
-}
-.card .info{
-    padding:15px;
-}
-.card .info h3{
+
+.hero h1{
     margin:0;
-    font-size:18px;
+    font-size:34px;
+    letter-spacing:1px;
 }
-.card .info p{
-    margin:5px 0 0 0;
-    color:var(--sub);
-    font-size:14px;
-}
-.card .info button{
-    margin-top:10px;
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:700;
-    background:var(--primary2);
-    color:#fff;
+.hero p{
+    margin:0;
+    color:rgba(255,255,255,0.9);
+    font-size:16px;
 }
 
-/* NEWS TAG */
-.tag{
-    display:inline-block;
-    padding:5px 10px;
-    border-radius:12px;
-    background:var(--primary2);
-    color:#fff;
-    font-weight:700;
-    font-size:12px;
-    margin-top:8px;
-}
-
-/* VIDEO PLAYER */
-.player{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    width:90%;
-    max-width:1000px;
-    background:var(--card);
-    border-radius:20px;
-    box-shadow: 0 20px 40px var(--shadow);
-    display:none;
-    z-index:1000;
-    overflow:hidden;
-}
-.player header{
+/* Carrousel */
+.sectionTitle{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px;
+    margin:18px 0 12px 0;
+}
+.sectionTitle h2{
+    margin:0;
+    font-size:20px;
+    letter-spacing:0.5px;
+}
+.sectionTitle span{
+    color:var(--sub);
+    font-size:14px;
+}
+
+.carousel{
+    display:flex;
+    gap:16px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    scrollbar-width:none;
+}
+.carousel::-webkit-scrollbar{display:none;}
+
+.card{
+    min-width:220px;
+    width:220px;
+    border-radius:18px;
+    overflow:hidden;
+    background:var(--card);
+    box-shadow: 0 14px 30px var(--shadow);
+    transition:0.2s;
+    position:relative;
+}
+
+.card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px var(--shadow);
+}
+
+.card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    display:block;
+}
+
+.card .info{
+    padding:14px;
+}
+.card .info h3{
+    margin:0;
+    font-size:16px;
+}
+.card .info p{
+    margin:8px 0 0 0;
+    color:var(--sub);
+    font-size:13px;
+}
+.card .info button{
+    margin-top:12px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:800;
+    background:var(--accent);
+    color:#fff;
+}
+
+/* Tag News */
+.tag{
+    position:absolute;
+    top:12px;
+    left:12px;
+    padding:6px 10px;
+    border-radius:12px;
+    background:var(--accent);
+    color:#fff;
+    font-weight:800;
+    font-size:12px;
+}
+
+/* Player */
+.player{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:none;
+    z-index:1000;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+}
+
+.playerContent{
+    width:95%;
+    max-width:1100px;
+    background:var(--card2);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow: 0 20px 60px var(--shadow);
+}
+
+.playerHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 16px;
     border-bottom:1px solid rgba(255,255,255,0.08);
 }
-.player header h2{
+.playerHeader h2{
     margin:0;
     font-size:18px;
 }
-.player header .controls{
-    display:flex;
-    gap:10px;
-}
-.player header button{
-    padding:8px 10px;
+.playerHeader button{
+    padding:10px 12px;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
     cursor:pointer;
     background:var(--primary);
     color:#fff;
-    font-weight:700;
+    font-weight:800;
 }
+
 .player iframe{
     width:100%;
-    height:560px;
+    height:600px;
     border:0;
 }
-.overlay{
-    position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
-    background:rgba(0,0,0,0.6);
-    display:none;
-    z-index:999;
-}
+
 @media (max-width: 768px){
     .hero h1{font-size:28px;}
-    .player iframe{height:320px;}
+    .card{min-width:180px; width:180px;}
+    .card img{height:260px;}
+    .player iframe{height:420px;}
 }
 </style>
 </head>
@@ -209,10 +261,10 @@ nav a:hover{
 <header>
     <div class="logo">StreamSite</div>
     <nav>
-        <a href="#" onclick="showSection('home')">Accueil</a>
-        <a href="#" onclick="showSection('films')">Films</a>
-        <a href="#" onclick="showSection('series')">Séries</a>
-        <a href="#" onclick="showSection('news')">News</a>
+        <a href="#" onclick="scrollToSection('home')">Accueil</a>
+        <a href="#" onclick="scrollToSection('films')">Films</a>
+        <a href="#" onclick="scrollToSection('series')">Séries</a>
+        <a href="#" onclick="scrollToSection('news')">News</a>
     </nav>
     <button class="btn" id="themeBtn">Dark Mode</button>
 </header>
@@ -221,41 +273,50 @@ nav a:hover{
 
     <div class="hero" id="home">
         <h1>Bienvenue sur StreamSite</h1>
-        <p>Films & Séries + lecture Uqload (embed) + dark mode.</p>
+        <p>Films & Séries + lecture Uqload embed + dark mode + plein écran.</p>
     </div>
 
     <!-- FILMS -->
-    <div id="films" style="display:none;">
-        <h2>Films</h2>
-        <div class="grid" id="filmsGrid"></div>
+    <div id="films">
+        <div class="sectionTitle">
+            <h2>Films</h2>
+            <span>Les nouveautés</span>
+        </div>
+        <div class="carousel" id="filmsCarousel"></div>
     </div>
 
     <!-- SERIES -->
-    <div id="series" style="display:none;">
-        <h2>Séries</h2>
-        <div class="grid" id="seriesGrid"></div>
+    <div id="series">
+        <div class="sectionTitle">
+            <h2>Séries</h2>
+            <span>Tout est regroupé ici</span>
+        </div>
+        <div class="carousel" id="seriesCarousel"></div>
     </div>
 
     <!-- NEWS -->
-    <div id="news" style="display:none;">
-        <h2>News</h2>
-        <div class="grid" id="newsGrid"></div>
+    <div id="news">
+        <div class="sectionTitle">
+            <h2>News</h2>
+            <span>Dernières mises à jour</span>
+        </div>
+        <div class="carousel" id="newsCarousel"></div>
     </div>
 
 </div>
 
 <!-- PLAYER -->
-<div class="overlay" id="overlay" onclick="closePlayer()"></div>
-
 <div class="player" id="player">
-    <header>
-        <h2 id="playerTitle"></h2>
-        <div class="controls">
-            <button onclick="goFullscreen()">Plein écran</button>
-            <button onclick="closePlayer()">Fermer</button>
+    <div class="playerContent">
+        <div class="playerHeader">
+            <h2 id="playerTitle"></h2>
+            <div>
+                <button onclick="toggleFullScreen()">Plein écran</button>
+                <button onclick="closePlayer()">Fermer</button>
+            </div>
         </div>
-    </header>
-    <iframe id="videoFrame" src="" allowfullscreen></iframe>
+        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+    </div>
 </div>
 
 <script>
@@ -274,22 +335,17 @@ const films = [
   }
 ];
 
-const series = {
-  "Série Minecraft": [
-    {
-      title: "Episode 1",
-      date: "2025-01-02",
-      poster: "https://fr.web.img5.acsta.net/c_300_300/img/3e/61/3e619c6423fd2c82be9ec8b727aa217b.jpg",
-      url: "https://uqload.bz/embed-4zvg3el1ohai.html"
-    },
-    {
-      title: "Episode 2",
-      date: "2025-01-03",
-      poster: "https://fr.web.img5.acsta.net/c_300_300/img/3e/61/3e619c6423fd2c82be9ec8b727aa217b.jpg",
-      url: "https://uqload.bz/embed-4zvg3el1ohai.html"
-    }
-  ]
-};
+const series = [
+  {
+    serie: "Série Minecraft",
+    date: "2025-01-02",
+    poster: "https://fr.web.img5.acsta.net/c_300_300/img/3e/61/3e619c6423fd2c82be9ec8b727aa217b.jpg",
+    episodes: [
+      { title:"Episode 1", date:"2025-01-02", url:"https://uqload.bz/embed-4zvg3el1ohai.html" },
+      { title:"Episode 2", date:"2025-01-03", url:"https://uqload.bz/embed-4zvg3el1ohai.html" }
+    ]
+  }
+];
 
 const news = [
   {
@@ -300,106 +356,118 @@ const news = [
   }
 ];
 
-function showSection(section){
-    document.getElementById("home").style.display = section === "home" ? "block" : "none";
-    document.getElementById("films").style.display = section === "films" ? "block" : "none";
-    document.getElementById("series").style.display = section === "series" ? "block" : "none";
-    document.getElementById("news").style.display = section === "news" ? "block" : "none";
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function createCard(item, type){
+    const card = document.createElement("div");
+    card.className = "card";
+
+    if(type === "news"){
+        card.innerHTML = `
+            <span class="tag">NEWS</span>
+            <img src="${item.poster}">
+            <div class="info">
+                <h3>${item.title}</h3>
+                <p>Date d'ajout : ${item.date}</p>
+                <button onclick="play('${item.url}', '${item.title}')">Lire</button>
+            </div>
+        `;
+    } else if(type === "series"){
+        card.innerHTML = `
+            <img src="${item.poster}">
+            <div class="info">
+                <h3>${item.serie}</h3>
+                <p>Episodes : ${item.episodes.length}</p>
+                <button onclick="showEpisodes(${JSON.stringify(item.episodes)}, '${item.serie}')">Voir épisodes</button>
+            </div>
+        `;
+    } else {
+        card.innerHTML = `
+            <img src="${item.poster}">
+            <div class="info">
+                <h3>${item.title}</h3>
+                <p>Date d'ajout : ${item.date}</p>
+                <button onclick="play('${item.url}', '${item.title}')">Lire</button>
+            </div>
+        `;
+    }
+
+    return card;
 }
 
 function loadContent(){
-  const filmsGrid = document.getElementById("filmsGrid");
-  const seriesGrid = document.getElementById("seriesGrid");
-  const newsGrid = document.getElementById("newsGrid");
+    const filmsCarousel = document.getElementById("filmsCarousel");
+    const seriesCarousel = document.getElementById("seriesCarousel");
+    const newsCarousel = document.getElementById("newsCarousel");
 
-  filmsGrid.innerHTML = "";
-  seriesGrid.innerHTML = "";
-  newsGrid.innerHTML = "";
+    filmsCarousel.innerHTML = "";
+    seriesCarousel.innerHTML = "";
+    newsCarousel.innerHTML = "";
 
-  films.forEach(f => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${f.poster}">
-      <div class="info">
-        <h3>${f.title}</h3>
-        <p>Date d'ajout : ${f.date}</p>
-        <button onclick="playUqload('${f.url}', '${f.title}')">Lire</button>
-      </div>
-    `;
-    filmsGrid.appendChild(card);
-  });
-
-  for (const serieName in series) {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${series[serieName][0].poster}">
-      <div class="info">
-        <h3>${serieName}</h3>
-        <p>Episodes : ${series[serieName].length}</p>
-        <button onclick="showSerie('${serieName}')">Voir les épisodes</button>
-      </div>
-    `;
-    seriesGrid.appendChild(card);
-  }
-
-  news.forEach(n => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${n.poster}">
-      <div class="info">
-        <h3>${n.title}</h3>
-        <span class="tag">NEWS</span>
-        <p>Date d'ajout : ${n.date}</p>
-        <button onclick="playUqload('${n.url}', '${n.title}')">Lire</button>
-      </div>
-    `;
-    newsGrid.appendChild(card);
-  });
+    films.forEach(f => filmsCarousel.appendChild(createCard(f, "film")));
+    series.forEach(s => seriesCarousel.appendChild(createCard(s, "series")));
+    news.forEach(n => newsCarousel.appendChild(createCard(n, "news")));
 }
 
-function showSerie(name){
-  const eps = series[name];
-  const grid = document.getElementById("seriesGrid");
-  grid.innerHTML = `
-    <div style="margin-bottom:20px;">
-      <button class="btn" onclick="loadContent()">Retour</button>
-    </div>
-    <h2 style="margin-top:0;">${name} - Episodes</h2>
-    <div class="grid">
-      ${eps.map(ep => `
-        <div class="card">
-          <img src="${ep.poster}">
-          <div class="info">
-            <h3>${ep.title}</h3>
-            <p>Date d'ajout : ${ep.date}</p>
-            <button onclick="playUqload('${ep.url}', '${name} - ${ep.title}')">Lire</button>
-          </div>
+function showEpisodes(episodes, serieName){
+    const seriesCarousel = document.getElementById("seriesCarousel");
+    seriesCarousel.innerHTML = `
+        <div class="card" style="min-width:100%; width:100%; background:var(--card2);">
+            <div class="info">
+                <h3 style="font-size:20px;">${serieName}</h3>
+                <p style="color:var(--sub);">Episodes disponibles :</p>
+                <button class="btn" onclick="loadContent()">Retour</button>
+            </div>
         </div>
-      `).join("")}
-    </div>
-  `;
+    `;
+
+    episodes.forEach(ep => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <img src="${series[0].poster}">
+            <div class="info">
+                <h3>${ep.title}</h3>
+                <p>Date d'ajout : ${ep.date}</p>
+                <button onclick="play('${ep.url}', '${serieName} - ${ep.title}')">Lire</button>
+            </div>
+        `;
+        seriesCarousel.appendChild(card);
+    });
+
+    scrollToSection("series");
 }
 
-function playUqload(url, title){
-  document.getElementById("playerTitle").innerText = title;
-  document.getElementById("videoFrame").src = url;
-  document.getElementById("overlay").style.display = "block";
-  document.getElementById("player").style.display = "block";
+function play(url, title){
+    document.getElementById("playerTitle").innerText = title;
+    document.getElementById("videoFrame").src = url + "?autoplay=1";
+    document.getElementById("player").style.display = "flex";
 }
 
 function closePlayer(){
-  document.getElementById("overlay").style.display = "none";
-  document.getElementById("player").style.display = "none";
-  document.getElementById("videoFrame").src = "";
+    document.getElementById("player").style.display = "none";
+    document.getElementById("videoFrame").src = "";
 }
 
-function goFullscreen(){
-  const player = document.getElementById("player");
-  if (player.requestFullscreen) {player.requestFullscreen();}
+function toggleFullScreen(){
+    const elem = document.getElementById("playerContent");
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
 }
+
+// Dark Mode
+const themeBtn = document.getElementById("themeBtn");
+themeBtn.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const next = current === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    themeBtn.innerText = next === "dark" ? "Dark Mode" : "Light Mode";
+});
 
 document.documentElement.setAttribute("data-theme", "dark");
 loadContent();
@@ -407,4 +475,3 @@ loadContent();
 
 </body>
 </html>
-

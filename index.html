@@ -172,6 +172,10 @@ nav a:hover{
     margin:0;
     font-size:18px;
 }
+.player header .controls{
+    display:flex;
+    gap:10px;
+}
 .player header button{
     padding:8px 10px;
     border:none;
@@ -246,7 +250,10 @@ nav a:hover{
 <div class="player" id="player">
     <header>
         <h2 id="playerTitle"></h2>
-        <button onclick="closePlayer()">Fermer</button>
+        <div class="controls">
+            <button onclick="goFullscreen()">Plein écran</button>
+            <button onclick="closePlayer()">Fermer</button>
+        </div>
     </header>
     <iframe id="videoFrame" src="" allowfullscreen></iframe>
 </div>
@@ -361,6 +368,17 @@ function closePlayer(){
   document.getElementById("overlay").style.display = "none";
   document.getElementById("player").style.display = "none";
   document.getElementById("videoFrame").src = "";
+}
+
+function goFullscreen(){
+  const player = document.getElementById("player");
+  if (player.requestFullscreen) {
+    player.requestFullscreen();
+  } else if (player.webkitRequestFullscreen) {
+    player.webkitRequestFullscreen();
+  } else if (player.msRequestFullscreen) {
+    player.msRequestFullscreen();
+  }
 }
 
 // Dark Mode

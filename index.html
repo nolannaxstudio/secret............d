@@ -5,190 +5,199 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>StreamSite</title>
 <style>
-    :root{
-        --bg:#0b0f18;
-        --card:#121827;
-        --text:#f4f4f8;
-        --sub:#a0a6b2;
-        --primary:#7c3aed;
-        --primary2:#22c55e;
-        --shadow: rgba(0,0,0,0.6);
-    }
-    [data-theme="light"]{
-        --bg:#f3f4f6;
-        --card:#ffffff;
-        --text:#0f172a;
-        --sub:#6b7280;
-        --primary:#7c3aed;
-        --primary2:#22c55e;
-        --shadow: rgba(0,0,0,0.12);
-    }
+:root{
+    --bg:#0b0f18;
+    --card:#121827;
+    --text:#f4f4f8;
+    --sub:#a0a6b2;
+    --primary:#7c3aed;
+    --primary2:#22c55e;
+    --shadow: rgba(0,0,0,0.6);
+}
+[data-theme="light"]{
+    --bg:#f3f4f6;
+    --card:#ffffff;
+    --text:#0f172a;
+    --sub:#6b7280;
+    --primary:#7c3aed;
+    --primary2:#22c55e;
+    --shadow: rgba(0,0,0,0.12);
+}
+*{box-sizing:border-box;}
+body{
+    margin:0;
+    font-family: 'Arial', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(10, 14, 25, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.logo{
+    font-size:22px;
+    font-weight:700;
+    color:var(--primary);
+}
+nav{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+nav a{
+    color:var(--text);
+    text-decoration:none;
+    font-weight:500;
+}
+nav a:hover{
+    color:var(--primary2);
+}
+.btn{
+    padding:10px 14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    background:var(--primary);
+    color:#fff;
+    transition:0.2s;
+}
+.btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px var(--shadow);
+}
+.container{
+    padding:20px;
+}
+.hero{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    padding:20px;
+    border-radius:20px;
+    background:linear-gradient(135deg, rgba(124,58,237,0.9), rgba(34,197,94,0.9));
+    color:#fff;
+    margin-bottom:20px;
+}
+.hero h1{margin:0; font-size:36px;}
+.hero p{margin:0; color:rgba(255,255,255,0.9); font-size:16px;}
+.grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:20px;
+}
+.card{
+    background:var(--card);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow: 0 10px 20px var(--shadow);
+    transition:0.2s;
+}
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 18px 30px var(--shadow);
+}
+.card img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+}
+.card .info{
+    padding:15px;
+}
+.card .info h3{
+    margin:0;
+    font-size:18px;
+}
+.card .info p{
+    margin:5px 0 0 0;
+    color:var(--sub);
+    font-size:14px;
+}
+.card .info button{
+    margin-top:10px;
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700;
+    background:var(--primary2);
+    color:#fff;
+}
 
-    *{box-sizing:border-box;}
-    body{
-        margin:0;
-        font-family: 'Arial', sans-serif;
-        background:var(--bg);
-        color:var(--text);
-    }
-    header{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        padding:20px;
-        position:sticky;
-        top:0;
-        z-index:999;
-        background:rgba(10, 14, 25, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-    .logo{
-        font-size:22px;
-        font-weight:700;
-        color:var(--primary);
-    }
-    nav{
-        display:flex;
-        gap:15px;
-        align-items:center;
-    }
-    nav a{
-        color:var(--text);
-        text-decoration:none;
-        font-weight:500;
-    }
-    nav a:hover{
-        color:var(--primary2);
-    }
-    .btn{
-        padding:10px 14px;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:600;
-        background:var(--primary);
-        color:#fff;
-        transition:0.2s;
-    }
-    .btn:hover{
-        transform: translateY(-2px);
-        box-shadow: 0 8px 18px var(--shadow);
-    }
-    .container{
-        padding:20px;
-    }
-    .hero{
-        display:flex;
-        flex-direction:column;
-        gap:15px;
-        padding:20px;
-        border-radius:20px;
-        background:linear-gradient(135deg, rgba(124,58,237,0.9), rgba(34,197,94,0.9));
-        color:#fff;
-        margin-bottom:20px;
-    }
-    .hero h1{margin:0; font-size:36px;}
-    .hero p{margin:0; color:rgba(255,255,255,0.9); font-size:16px;}
-    .grid{
-        display:grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap:20px;
-    }
-    .card{
-        background:var(--card);
-        border-radius:18px;
-        overflow:hidden;
-        box-shadow: 0 10px 20px var(--shadow);
-        transition:0.2s;
-    }
-    .card:hover{
-        transform: translateY(-5px);
-        box-shadow: 0 18px 30px var(--shadow);
-    }
-    .card img{
-        width:100%;
-        height:140px;
-        object-fit:cover;
-    }
-    .card .info{
-        padding:15px;
-    }
-    .card .info h3{
-        margin:0;
-        font-size:18px;
-    }
-    .card .info p{
-        margin:5px 0 0 0;
-        color:var(--sub);
-        font-size:14px;
-    }
-    .card .info button{
-        margin-top:10px;
-        width:100%;
-        padding:10px;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;
-        background:var(--primary2);
-        color:#fff;
-    }
+/* NEWS TAG */
+.tag{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:12px;
+    background:var(--primary2);
+    color:#fff;
+    font-weight:700;
+    font-size:12px;
+    margin-top:8px;
+}
 
-    /* VIDEO PLAYER */
-    .player{
-        position:fixed;
-        top:50%;
-        left:50%;
-        transform: translate(-50%, -50%);
-        width:80%;
-        max-width:900px;
-        background:var(--card);
-        border-radius:20px;
-        box-shadow: 0 20px 40px var(--shadow);
-        display:none;
-        z-index:1000;
-        overflow:hidden;
-    }
-    .player header{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        padding:15px;
-        border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .player header h2{
-        margin:0;
-        font-size:18px;
-    }
-    .player header button{
-        padding:8px 10px;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        background:var(--primary);
-        color:#fff;
-        font-weight:700;
-    }
-    .player video{
-        width:100%;
-        height:480px;
-        background:#000;
-    }
-    .overlay{
-        position:fixed;
-        top:0;left:0;
-        width:100%;height:100%;
-        background:rgba(0,0,0,0.6);
-        display:none;
-        z-index:999;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px){
-        .hero h1{font-size:28px;}
-        .player video{height:260px;}
-    }
+/* VIDEO PLAYER */
+.player{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:90%;
+    max-width:1000px;
+    background:var(--card);
+    border-radius:20px;
+    box-shadow: 0 20px 40px var(--shadow);
+    display:none;
+    z-index:1000;
+    overflow:hidden;
+}
+.player header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.player header h2{
+    margin:0;
+    font-size:18px;
+}
+.player header button{
+    padding:8px 10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:var(--primary);
+    color:#fff;
+    font-weight:700;
+}
+.player iframe{
+    width:100%;
+    height:560px;
+    border:0;
+}
+.overlay{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    z-index:999;
+}
+@media (max-width: 768px){
+    .hero h1{font-size:28px;}
+    .player iframe{height:320px;}
+}
 </style>
 </head>
 <body>
@@ -199,6 +208,7 @@
         <a href="#" onclick="showSection('home')">Accueil</a>
         <a href="#" onclick="showSection('films')">Films</a>
         <a href="#" onclick="showSection('series')">Séries</a>
+        <a href="#" onclick="showSection('news')">News</a>
     </nav>
     <button class="btn" id="themeBtn">Dark Mode</button>
 </header>
@@ -207,7 +217,7 @@
 
     <div class="hero" id="home">
         <h1>Bienvenue sur StreamSite</h1>
-        <p>Films & Séries, lecture automatique, dark mode, design moderne.</p>
+        <p>Films & Séries + lecture Uqload (autoplay) + dark mode.</p>
     </div>
 
     <!-- FILMS -->
@@ -222,6 +232,12 @@
         <div class="grid" id="seriesGrid"></div>
     </div>
 
+    <!-- NEWS -->
+    <div id="news" style="display:none;">
+        <h2>News</h2>
+        <div class="grid" id="newsGrid"></div>
+    </div>
+
 </div>
 
 <!-- PLAYER -->
@@ -232,94 +248,136 @@
         <h2 id="playerTitle"></h2>
         <button onclick="closePlayer()">Fermer</button>
     </header>
-    <video id="videoPlayer" controls autoplay></video>
+    <iframe id="videoFrame" src="" allowfullscreen></iframe>
 </div>
 
 <script>
-    const films = [
-        { title: "Film 1", date: "2025-01-15", poster: "https://picsum.photos/400/300?random=1", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-        { title: "Film 2", date: "2025-02-10", poster: "https://picsum.photos/400/300?random=2", src: "https://www.w3schools.com/html/movie.mp4" },
-        { title: "Film 3", date: "2025-03-05", poster: "https://picsum.photos/400/300?random=3", src: "https://www.w3schools.com/html/mov_bbb.mp4" }
-    ];
+const films = [
+  { title: "Minecraft Movie", date: "2025-01-01", poster: "https://picsum.photos/400/300?random=1", url: "https://uqload.bz/4zvg3el1ohai.html" }
+];
 
-    const series = [
-        { title: "Série 1 - Episode 1", date: "2025-03-01", poster: "https://picsum.photos/400/300?random=4", src: "https://www.w3schools.com/html/movie.mp4" },
-        { title: "Série 1 - Episode 2", date: "2025-03-05", poster: "https://picsum.photos/400/300?random=5", src: "https://www.w3schools.com/html/mov_bbb.mp4" },
-        { title: "Série 2 - Episode 1", date: "2025-04-10", poster: "https://picsum.photos/400/300?random=6", src: "https://www.w3schools.com/html/movie.mp4" }
-    ];
+const series = {
+  "Série Minecraft": [
+    { title: "Episode 1", date: "2025-01-02", poster: "https://picsum.photos/400/300?random=2", url: "https://uqload.bz/4zvg3el1ohai.html" },
+    { title: "Episode 2", date: "2025-01-03", poster: "https://picsum.photos/400/300?random=3", url: "https://uqload.bz/4zvg3el1ohai.html" }
+  ]
+};
 
-    function showSection(section){
-        document.getElementById("home").style.display = section === "home" ? "block" : "none";
-        document.getElementById("films").style.display = section === "films" ? "block" : "none";
-        document.getElementById("series").style.display = section === "series" ? "block" : "none";
-    }
+const news = [
+  { title: "News Minecraft", date: "2025-05-01", poster: "https://picsum.photos/400/300?random=4", url: "https://uqload.bz/4zvg3el1ohai.html" }
+];
 
-    function loadContent(){
-        const filmsGrid = document.getElementById("filmsGrid");
-        const seriesGrid = document.getElementById("seriesGrid");
+function showSection(section){
+    document.getElementById("home").style.display = section === "home" ? "block" : "none";
+    document.getElementById("films").style.display = section === "films" ? "block" : "none";
+    document.getElementById("series").style.display = section === "series" ? "block" : "none";
+    document.getElementById("news").style.display = section === "news" ? "block" : "none";
+}
 
-        films.forEach(f => {
-            const card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-                <img src="${f.poster}" alt="${f.title}">
-                <div class="info">
-                    <h3>${f.title}</h3>
-                    <p>Date d'ajout : ${f.date}</p>
-                    <button onclick="playVideo('${f.src}', '${f.title}')">Lire</button>
-                </div>
-            `;
-            filmsGrid.appendChild(card);
-        });
+function loadContent(){
+  const filmsGrid = document.getElementById("filmsGrid");
+  const seriesGrid = document.getElementById("seriesGrid");
+  const newsGrid = document.getElementById("newsGrid");
 
-        series.forEach(s => {
-            const card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-                <img src="${s.poster}" alt="${s.title}">
-                <div class="info">
-                    <h3>${s.title}</h3>
-                    <p>Date d'ajout : ${s.date}</p>
-                    <button onclick="playVideo('${s.src}', '${s.title}')">Lire</button>
-                </div>
-            `;
-            seriesGrid.appendChild(card);
-        });
-    }
+  filmsGrid.innerHTML = "";
+  seriesGrid.innerHTML = "";
+  newsGrid.innerHTML = "";
 
-    function playVideo(src, title){
-        document.getElementById("playerTitle").innerText = title;
-        const video = document.getElementById("videoPlayer");
-        video.src = src;
-        video.autoplay = true;
-        document.getElementById("overlay").style.display = "block";
-        document.getElementById("player").style.display = "block";
-    }
+  films.forEach(f => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${f.poster}">
+      <div class="info">
+        <h3>${f.title}</h3>
+        <p>Date d'ajout : ${f.date}</p>
+        <button onclick="playUqload('${f.url}', '${f.title}')">Lire</button>
+      </div>
+    `;
+    filmsGrid.appendChild(card);
+  });
 
-    function closePlayer(){
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("player").style.display = "none";
-        const video = document.getElementById("videoPlayer");
-        video.pause();
-        video.src = "";
-    }
+  for (const serieName in series) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${series[serieName][0].poster}">
+      <div class="info">
+        <h3>${serieName}</h3>
+        <p>Episodes : ${series[serieName].length}</p>
+        <button onclick="showSerie('${serieName}')">Voir les épisodes</button>
+      </div>
+    `;
+    seriesGrid.appendChild(card);
+  }
 
-    // Dark Mode
-    const themeBtn = document.getElementById("themeBtn");
-    themeBtn.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        if(currentTheme === "light"){
-            document.documentElement.setAttribute("data-theme", "dark");
-            themeBtn.innerText = "Light Mode";
-        } else {
-            document.documentElement.setAttribute("data-theme", "light");
-            themeBtn.innerText = "Dark Mode";
-        }
-    });
+  news.forEach(n => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${n.poster}">
+      <div class="info">
+        <h3>${n.title}</h3>
+        <span class="tag">NEWS</span>
+        <p>Date d'ajout : ${n.date}</p>
+        <button onclick="playUqload('${n.url}', '${n.title}')">Lire</button>
+      </div>
+    `;
+    newsGrid.appendChild(card);
+  });
+}
 
-    // Default
+function showSerie(name){
+  const eps = series[name];
+  const grid = document.getElementById("seriesGrid");
+  grid.innerHTML = `
+    <div style="margin-bottom:20px;">
+      <button class="btn" onclick="loadContent()">Retour</button>
+    </div>
+    <h2 style="margin-top:0;">${name} - Episodes</h2>
+    <div class="grid">
+      ${eps.map(ep => `
+        <div class="card">
+          <img src="${ep.poster}">
+          <div class="info">
+            <h3>${ep.title}</h3>
+            <p>Date d'ajout : ${ep.date}</p>
+            <button onclick="playUqload('${ep.url}', '${name} - ${ep.title}')">Lire</button>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function playUqload(url, title){
+  document.getElementById("playerTitle").innerText = title;
+  document.getElementById("videoFrame").src = url;
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("player").style.display = "block";
+}
+
+function closePlayer(){
+  document.getElementById("overlay").style.display = "none";
+  document.getElementById("player").style.display = "none";
+  document.getElementById("videoFrame").src = "";
+}
+
+// Dark Mode
+const themeBtn = document.getElementById("themeBtn");
+themeBtn.addEventListener("click", () => {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  if(currentTheme === "light"){
     document.documentElement.setAttribute("data-theme", "dark");
-    loadContent();
+    themeBtn.innerText = "Light Mode";
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    themeBtn.innerText = "Dark Mode";
+  }
+});
+
+document.documentElement.setAttribute("data-theme", "dark");
+loadContent();
 </script>
 
 </body>
